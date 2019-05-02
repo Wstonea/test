@@ -1,0 +1,355 @@
+*{margin: 0;padding: 0;}
+header{background-color: #333;color:red ;width:100%;overflow: hidden;}
+header nav,.logo{margin-top: 15px;height: 39px;}
+body{background: #cbcbcb;}
+.logo{float: left;margin-left:100px}
+nav{float: left;color:#fff;position: absolute;margin-left: 220px;width: 800px;}
+nav ul{width: 800px;}
+.logo a{color: #FFFFFF;text-decoration: none;}
+.menu0 a{color:white;text-decoration: none;}
+.menu0 a:hover{color: aqua;}
+.menu0>li:first-child{margin-left:60px;}
+.menu0>li:first-child>img{width:18px;}
+.menu0>li>img{width:15px;}
+span{position: absolute;}
+span>.seek{width: 25px;height: 25px; margin-left: 200px;background-image: url(image/nav_img/搜索.png);background: #333333;border: 0;}
+span>.seek>img{width: 25px;}
+span>.seek>img:hover{}
+.menu0 li{float: left;list-style: none;height: 35px;margin-left: 50px;}
+.menu0 li:hover{color:aqua}
+.menu11,.menu12{	position:absolute;top:35px;display:none;background: #333333;width: 110px;z-index: 1;/*z-index设置优先级*/}
+.menu11 li,.menu12 li{list-style: none;float: none;color: #FFFFFF;margin: 5px;word-wrap: break-word;/*该属性会让不能自动换行的数字和字母实现自动换行的功能*/font-size: 12px;}
+.menu11 li:hover{color: aqua;}
+/*-------------------搜索框----------------------------------------------------------------------------------*/
+
+.search{width: 1100px;height: 60px;background: #fff;margin: 70px 0px 25px 100px;display: none;}
+.text{width: 350px;height: 35px;margin: 12px 250px}
+.btn0{width: 150px;height: 35px;background: #444;border: 0;color: #fff;margin: 12px -250px}
+.search_img,.search_img>img{width: 35px;height: 35px;}
+.search_img{float: right;margin:12px 30px ;}
+
+/*-------------------------------------------*/
+
+.left_div{overflow: hidden;width: 850px;float: left;margin-top: 25px;margin-left: 100px;}
+.right_div{overflow: hidden;width: 280px ;float: right;margin-top:25px ;margin-right: 80px;}
+
+/*-------------------------------------------图片轮播--------------------------------------------------------*/
+
+.container {position: absolute;left: 100px;width: 600px;height: 270px;float: left; }
+ 
+ 
+ /*使用绝对定位，使全部图片叠加到一块*/ 
+ 
+.box,.box>img { position: absolute;top: 0;left: 0;} 
+.box>img{width:550px;height: 250px;display: block;}
+ 
+ /*下面小圆点，使用绝对定位，位于图片的正下方*/ 
+.circle{position: absolute;padding-top: 200px;padding-left: 310px;} 
+ 
+ /*每个小圆点的样式*/ 
+ .circle b {display: inline-block;width: 13px;height: 13px;background-color: #fff;border-radius: 50%; margin: 3px;} 
+
+/*小圆点的当前样式，也是鼠标移上去的样式*/ 
+
+.circle .current {background-color: #e7ff00;} 
+
+/*左右两侧的按钮，采用绝对定位*/
+.btn {position: absolute;top: 50%;width: 40px;height: 50px;margin-top: -25px;
+		background-color: rgba(255, 255, 255, .0);text-align: center;line-height: 50px;
+		font-size: 35px;cursor: pointer;
+} 
+
+.left {
+    left: -8px;top:52%;
+} .right {
+    right: 0;
+	margin-right: 42px;
+}
+
+/*---------------------------------------------------------------------------------*/
+
+.span0{float: right;}
+.text1{width: 270px;height: 115px;overflow: hidden;}
+.text2{width: 270px;height: 114px;margin-top: 20px;overflow: hidden;}
+.text1 a img{width: 270px;height: 115px;transition: all 0.6s/*transform: scale(1.1,1.1)*/;}/*transform:可对对象进行多个动画（缩放，旋转等。）*/
+.text2 a img{width:270px;height: 114px;transition: all 0.6s/* transform: scale(1.1,1.1);*/;}/*traisition:效果与transform类似，不过动画效果比其多。（但不知为何我暂时应用不了，重点）*/
+/*.fangda1 img:hover,.fangda2 img:hover{transform: scale(1.2,1.2);}/*transform:可对对象进行多个动画（缩放，旋转等。）*/
+.text1 a span{ position: absolute;margin-left: -225px;margin-top: 44px;color:#00f6ff;}
+.text2 a span{position: absolute;color: #00f6ff;margin-left: -225px;margin-top: 45px;}
+
+.transform{transform: scale(1.2,1.2);}
+
+/*------------------------名片------*/
+.viscard{ height: 250px;overflow: hidden;color: #fff;background: #4c4c4c;border-radius: 2%;}
+.viscard h2{margin: 15px}
+.viscard p{margin-top: 15px;font-size: 12px; margin-left:30px}
+.viscard ul{height: 50px;width: 280px;/*! background: #fff; */margin:0px;margin-top:16px}
+.viscard li{width: 50px;height: 50px;float: left;list-style: none;
+			box-shadow: 1px 3px 1px rgba(255,255,255,.1), inset 0px 1px 1px rgba(0, 0, 0, 0.7);/*为li标签添加内阴影的css样式*/
+			border-radius: 50%;margin-left:15px}
+.viscard li:hover{opacity: 0.4;}
+.viscard img{width: 35px;height: 35px;padding-left: 8px;padding-top: 7px;}
+.viscard li i{display: none;}
+#qq i{margin-top: -170px;position: absolute}
+#weixin i{margin-top: -170px;position: absolute;margin-left: -75px;}
+#qq i img,#weixin i img{width: 100px;height: 100px}
+
+.viscard li:hover img{opacity: 1}
+/*---------------------------名片结束---------*/
+
+/*----------------------分页显示--------------------------------------------------------------*/
+/*----点击切换部分*/
+.tab_box{ float: right;width: 850px; background: #fff; margin-top: 25px; border-radius: 3px;height: 310px;}
+.box_buttons ul{width:750px;height: 31px;padding: 30px 25px 0px 0px;margin-left: 30px;border-bottom: 1px solid #aaa;}
+.box_buttons li:first-child{margin-left:0px; ;}
+.box_buttons li{float: left;list-style: none;height: 30px;margin-left: 30px;cursor: pointer;}
+.box_buttons li:hover{text-shadow: 0 0 15px;}
+/*----跟随切换部分*/
+.newstab{margin-top: 10px;margin-left: 30px;height: 220px;width:776px;overflow: hidden;position: absolute;}
+
+.dom{width: 310px;height: 220px;float: left;}
+.dom ul{width: 300px;height: 220px;}
+.dom li{width: 300px;height: 100px;list-style: none;overflow: hidden}
+.dom li:last-child{padding-top: 15px;}
+.dom img{width: 300px;height: 120px;border-radius: 1%;transition: all 0.4s}
+.dom img:hover{transform:  scale(1.1,1.1)}
+
+.dom span{position: relative;margin-left: -185px;buttom: 20px;buttom: 20px;line-height: 20px;}
+
+/*---------*/
+.newlist{float:right;width: 450px;}
+.newlist li{list-style: none;width:450px;overflow: hidden;height: 24px;padding-top:10px ;}
+
+/*	1	首先先让第一个li的高度为100%，
+	2	之后再设置.newlist(ul)的hover[目的是当其鼠标值为空时，对后面的其它元素进行更改](作用为让2-5个li的高度为100%)，
+	3	同时在让其同级的其它li的高度强制为22px，
+	4	之后再设置一个同级li的hover，使其高度为100%，
+	5	最后在为第一个li设置一个hover，让其不被第3步的属性给覆盖*/
+.newlist li:nth-child(1){height: 100%;background: #e4d9d9;}
+.newlist li:hover{height: 100%;background: #e4d9d9;}
+.newlist:hover li:nth-child(1) { height: 22px; background: none; }
+.newlist:hover li:nth-child(1):hover { height: 100%; background: #e4d9d9; }
+
+/*----详细步骤结束-------*/
+
+/*-----同上----*/
+.newlist li:nth-child(1) i{background: #000;}
+.newlist:hover li:nth-child(1) i{background:#9a9a9a}
+.newlist:hover li:nth-child(1):hover i{background: #000000;}
+.newlist li:hover i{background: #000;}
+.newlist p{line-height: 24px; font-size: 13px;height: 55px; text-align:inherit;padding-left:16px ;}
+/*-----结束------*/
+
+.newlist li a{margin-left: 40px;text-decoration: none;/*这是去掉超链接下划线*/;}
+.newlist li i{height: 20px;background: #9a9a9a;position: absolute;text-align: center;width: 20px;}
+.newlist li i::before{color:#fff;width: 20px;text-align: center;font-size: 10px;}
+.newlist li:nth-child(1) i::before{content: "1"}
+.newlist li:nth-child(2) i::before{content: "2"}
+.newlist li:nth-child(3) i::before{content: "3"}
+.newlist li:nth-child(4) i::before{content: "4"}
+.newlist li:nth-child(5) i::before{content: "5"}
+
+.display{display: block;}
+/*-----------.newstab-----------*/
+
+/*------网站公告---开始---*/
+.webaff{width: 280px;height: 300px;margin-top: 15px;border-radius: 1%;background: #fff;}
+.webaff h2{border-bottom: 1px solid #ccc;padding: 10px 0 10px 0px;height: 20px;width: 235px;margin-left: 20px;font-family: 楷体;}
+.webaff h2:hover span{width: 110px;}
+.webaff span{display: block;border-bottom: 2px solid;width: 85px;}
+.webaff h2:hover{text-shadow: 0 0 10px;}
+.webaff li{margin-top: 15px;height: 25px;padding: 10px;background: #feecec;
+			border-radius: 2%;width: 215px;margin-left: 20px;list-style: none;}
+.webaff li::before{content: ".";font-size:35px;line-height: 10px;margin-left: 5px;margin-right: 15px; #000;}
+.webaff a{text-decoration: none;color: #000000;}
+.webaff li:hover{box-shadow: 0 0 10px #aaa/*box-shadow是设置阴影的属性，默认为外阴影，inset设置成外阴影*/;}
+/*------网站公告---结束---*/
+
+/*-------精彩专题---开始------*/
+.zhuanti{height: 800px;margin-top: 15px;float: left;width: 850px;background: #fff;border-radius: 2px;}
+
+.zhuanti span{margin-right: 0px; margin-left: 500px;}
+.zhuanti a{text-decoration: none;color: #000000;font-family: 楷体;}
+.zhuanti a:hover{text-shadow: 0 0 10px #000;color: #000;}
+.zhuanti h3 span a:nth-child(1)::after,.zhuanti h3 span a:nth-child(2)::after,.zhuanti h3 span a:nth-child(3)::after{content: "/";color: #aaa;}
+.zhuanti h3{padding: 25px 0 0 0px;width: 800px;border-bottom: 1px solid #aaa;margin-left: 25px;height: 35px;}
+
+.zhuanti ul li{width: 260px;height: 350px;overflow: hidden;margin-left:7px;margin-top:15px;float: left;}
+
+.zhuanti img{width: 200px;height: 220px;transition: all 0.4s;}
+
+.i{width: 200px;height: 220px;overflow: hidden;}
+.zhuanti_ul{margin-left: 15px;}
+.zhuanti_ul b{padding: 20px;}
+.zhuanti_ul span{font-size: 12px;width: 260px;height:60px;overflow: hidden;color: #aaa;margin-top:25px;margin-left: -105px;}
+.zhuanti_ul span p{padding: 12px;margin: 0px;}
+.zhuanti_ul p{margin: 70px 0px 0px 10px;}
+.zhuanti_ul p a{color: #07b333;}
+.zhuanti_ul p a::after{content: ">>>";font-size: 12px;color: #7a7a7a;margin-left: 8px;}
+
+.zhuanti li:hover{box-shadow: 0 0 10px #aaa;}
+.zhuanti_ul img:hover{transform: scale(1.1,1.1);}
+
+.zhuanti_ul dt{width: 200px;height: 220px;overflow: hidden;margin: -20px 0 0 15px;}
+
+/*-------精彩专题---结束------*/
+
+/*-----点击排行-----开始------*/
+.clickotl{height: 500px;margin-top: 20px;border-radius: 2px;background: #fff;}
+.clickotl h3{height: 40px;padding: 10px 0 0 0px;width: 250px;border-bottom: 1px solid #aaa;margin-left: 15px;}
+.clickotl section{width: 250px;height: 120px;overflow: hidden;margin-left: 15px;}
+.clickotl section img{height: 120px;margin-top: 10px;transition: all 0.4s ease;width: 100%;/*transition相当于是css的一个动画效果的计时器，该意思是动画时间0.4秒内完成*/}
+.clickotl section img:hover{transform: scale(1.1,1.1);}
+.clickotl section a span{margin: -75px 0 0 65px;color: #06fff6;}
+
+.clickotl ul{margin-left: 15px;list-style: none;;}
+.clickotl li{width: 250px;height: 30px;padding-top: 10px;}
+.clickotl li:hover{box-shadow: 0 0 10px #aaa}
+.clickotl a{text-decoration: none;color: #333333;margin-left: 10px;}
+.clickotl i{width: 15px;height: 15px;background: #aaa;color: #fff;margin-left: 5px;}
+.clickotl li:nth-child(2n){background: #feecec;border-radius: 2px;}
+.clickotl li i::after{font-size:12px;;margin: 0 5px;}/*此处不知道为什么我不能直接对::after直接添加样式，所以我只好对after的父元素i控制，改变它的高宽  !important*/
+
+.clickotl li:nth-child(1) i{background: orangered;}
+.clickotl li:nth-child(2) i{background: orangered;}
+.clickotl li:nth-child(3) i{background: orangered;}
+
+.clickotl li:nth-child(1) i::after{content: "1";}
+.clickotl li:nth-child(2) i::after{content: "2";}
+.clickotl li:nth-child(3) i::after{content: "3";}
+.clickotl li:nth-child(4) i::after{content: "4";}
+.clickotl li:nth-child(5) i::after{content: "5";}
+.clickotl li:nth-child(6) i::after{content: "6";}
+.clickotl li:nth-child(7) i::after{content: "7";}
+.clickotl li:nth-child(8) i::after{content: "8";}
+/*-----点击排行-----结束------*/
+
+/*-----站长推荐-----开始------*/
+.masterrd{background: #fff;border-radius:2px;margin-top: 20px;height: 840px ;}
+.masterrd h3{margin-left:15px;padding-top: 10px;width: 250px;border-bottom: 1px solid #aaa;height: 35px;}
+.masterrd section{width: 250px;height: 120px;margin: 10px 0 0 15px;overflow: hidden;border-radius: 2px;}
+.masterrd section img{height: 120px;width: 250px;border-radius: 2px;transition: all 0.4s ease;}
+.masterrd section img:hover{transform: scale(1.1,1.1);}
+.masterrd span{margin: 50px 0 0 -190px;color: #fff;}
+
+.masterrd_ul li:hover{background: #feefef;}
+.masterrd_ul li{list-style: none;width: 250px;height: 80px;margin: 10px 0 0 15px;}
+.masterrd_ul li:nth-child(1){margin-top: 30px;}
+.masterrd_ul a{text-decoration: none;color: #222;}
+.masterrd_ul li dt{width: 100px;height: 80px;overflow: hidden;float: left;border-radius: 2px;}
+.masterrd_ul li a img{width: 100px;height: 80px;border-radius: 2px;float: left;transition: all 0.4s ease;}
+.masterrd_ul li img:hover{transform: scale(1.1,1.1);}
+.masterrd_ul li p{font-size: 15px;padding: 10px 0 0 115px;}
+
+/*-----站长推荐-----结束------*/
+
+/*-----主题LOGO-----开始------*/
+.themelogo img{width: 100%;height: 180px;padding-top: 20px;border-radius: 2px;}
+
+/*-----主题LOGO-----结束------*/
+
+/*------最新博文-----开始-----*/
+.newestba{background: #fff;height:1970px;margin-top: 25px;border-radius: 2px;}
+.newestba h3{height: 35px;padding: 10px 0 0 0px;border-bottom: 1px solid #aaa;margin-left: 15px;width: 820px;font-size: 20px;}
+.newestba h4{font-size: 18px;}
+.newestba_ul{margin-left: 15px;padding: 10px 0 0 0;list-style: none;width: 820px;}
+.newestba_ul a{text-decoration: none;color: #000;}
+.newestba_ul li:hover h4 a{color: royalblue;}
+.newestba_ul li span{position:initial}
+
+/*多图*/
+.new_li_1{padding-top: 10px;height: 270px;}
+.new_li_1 b{color:red}
+.new_li_1 span a{text-decoration: none;color: #000;}
+
+.new_span{width: 815px;height: 124px;overflow: hidden;padding-top: 10px;}
+.new_span dt{width: 195px;height: 120px;overflow: hidden;float: left;padding-left: 5px;}
+.new_span img{width: 190px;height: 120px;transition: all 0.4s ease}
+.new_span img:hover{transform: scale(1.1,1.1)} 
+.new_p_1{margin-top: 135px;height: 50px;overflow: hidden;font-size: 13px;width: 805px;}
+
+.new_dl i{float: left;}
+.new_dl dt{padding-top: 15px;}
+.new_dl i img{width: 50px;}
+.new_dl{height: 50px;}
+.new_dl span{margin-left: 10px;position: inherit;}
+.new_dl dt span a{color:limegreen;;}
+
+
+/*单图*/
+.new_li_n{padding-top: 20px;}
+.new_li_n span img{height: 150px;width:250px;transition: all 0.4s ease;}
+.new_li_n_p{height: 50px;width: 550px;margin: 30px 0 0 275px;font-size: 13px;}
+.new_li_n_a{margin: -30px 20px 0 auto;color: limegreen;float:right;width: 75px;height: 25px;background-color: #12b7de;border-radius: 5px;text-align: center;}
+.new_li_n_a:hover{color: #fff}
+.new_li_span{float: left;margin-top: 15px;}
+.new_li_span dt{width: 250px;height: 150px;overflow: hidden;}
+.new_li_span img{transition: all 0.4s ease;}
+.new_li_span img:hover{transform: scale(1.1,1.1);}
+
+.new_d2{height: 50px;width: 565px;margin: 30px 0 0 265px;}
+.new_d2 i{float: left;}
+.new_d2 dt{padding-top: 15px;}
+.new_d2 i img{width: 50px;}
+.new_d2 span{margin-left: 10px;position: inherit;}
+.new_d2 dt span a{color:limegreen;float: none;margin: 0 auto;}
+
+/*纯文*/
+.plaintext{height: 150px;margin-top: 20px}
+.plaintext p{font-size: 13px;height: 50px;padding: 10px 0 0 15px}
+.plaintext dl{padding: 10px 0 0 15px}
+.plaintext dl a{float: none}
+.plain_a{float: right;margin: -30px 19px 0 auto;width: 75px;height: 25px;background: #12b7de;border-radius: 5px;text-align: center;}
+.plain_a:hover{color: #fff;}
+
+/*------最新博文-----结束-----*/
+
+/*----插图------*/
+ .chatu{margin-top: 25px;overflow: hidden;border-radius: 10px;}
+ .chatu img{width: 300px;height: 350px;transition: all 0.4s ease;}
+ .chatu img:hover{transform: scale(1.1,1.1);}
+ /*插图结束*/
+ 
+ /*---------猜你喜欢------开始-------*/
+.guesswyl{margin-top: 25px;background:#fff;border-radius: 4px;}
+.guesswyl h3{padding: 15px 0 10px 0px;border-bottom: 1px solid #aaa;width: 220px;height: 25px;margin-left: 20px;margin-top: 10px}
+.guesswyl ul{padding-top: 10px;width: 220px;list-style: none;margin-left: 20px;}
+.guesswyl li:hover{box-shadow: 0 0 10px #aaa;border-radius:5px;background: #feecec}
+.guesswyl li{padding-top: 10px;height: 40px;font-size: 15px;}
+.guesswyl a{text-decoration: none;color:#444;padding-left:25px}
+.guesswyl li::before{height: 4px;width: 4px;background: #000;position: absolute;content: "";border-radius: 50%;padding: 0px 0px 0px 0px;margin-top: 8px;}
+  
+ /*---------猜你喜欢------开始-------*/
+ 
+ /*-------网页统计-------开始-------*/
+.websta{background: #fff;border-radius: 5px}
+.websta h3{padding: 15px 0 10px 0px;border-bottom: 1px solid #aaa;width: 220px;height: 25px;margin-left: 20px;margin-top: 10px}
+.websta ul{padding-top: 10px;width: 220px;list-style: none;margin-left: 20px;}
+.websta li{padding-top: 10px;}
+/*-------网页统计-------开始-------*/
+
+/*-------友情链接-------开始-----*/
+.blogroll{background: #fff;margin-top:10px;border-radius: 5px;height: 134px;}
+.blogroll li{float:left;list-style:none}
+.blogroll li:first-child{width: 60px;height: 60px;font-size: 15px;padding: 20px 20px 20px 20px}
+
+.weixin{width: 100px;}
+.dianzan1{width: 40px;padding-bottom: 10px;cursor: pointer}
+.xin1{width: 40px;cursor: pointer}
+ 
+.geili{width: 78px;height: 30px;float: left;margin: 35px 0 0 -190px;text-align: center;border-radius: 20px;}
+.xihuan{width: 78px;height: 30px;float: left;margin: 35px 0 0 -90px;text-align: center;border-radius: 20px;}
+ 
+/*-------友情链接-------开始-----*/
+ 
+ /*-------尾部----------*/
+footer{background: #373D41;width: 100%;border-top: #00C1DE 10px solid;padding: 30px 0;color: #73777a;font-size: 14px;float: left;margin-top: 20px;}
+footer dt{height: 40px;width: 40px;float: right;padding-right: 80px}
+footer img{height: 40px;width: 40px}
+.anchor{height: 40px;width: 40px;}
+ 
+.endnav b { font-size: 16px; color: #00c1de; }
+.endnav p { margin-bottom: 5px }
+
+.endimg{float: left;width: 270px;height: 100px;padding-left: 80px;}
+.endimg img{width: 100px;height: 100%;padding-left: 20px}

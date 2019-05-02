@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title></title>
+	<script type="text/javascript" src="index_files/jquery-1.js"></script><script type="text/javascript">
+/*-----------------------------------------------navjQuery----------------------------------------------------*/
+		$(document).ready(function() {
+
+				//------关于我----
+			$('.menu0 li:eq(1)').mousemove(function() {
+				if ($('.menu11').is(':hidden'))
+					{
+						$('.menu11').show();
+						$('.menu0>li:eq(1)>img').css('transform','rotate(180deg)');
+					}
+				});
+			$('.menu0 li:eq(1)').hover(null, function() {
+				$('.menu11').hide();
+				$('.menu0>li:eq(1)>img').css('transform','rotate(360deg)');
+				});
+				//---------关于我结束------------
+				
+				//--------联系他--------
+			$('.menu0>li:eq(2)').mousemove(function(){
+				if($('.menu12').is(':hidden'))
+					{
+						$('.menu12').show();
+						$('.menu0>li:eq(2)>img').css('transform','rotate(180deg)');
+						//transform:rotate(30deg);-----设置图片旋转的值0~360
+					}
+				});
+			$('.menu0>li:eq(2)').hover(null,function(){
+				$('.menu12').hide();
+				$('.menu0>li:eq(2)>img').css('transform','rotate(360deg)');
+			});
+			//-----联系他结束------
+			
+			//----------------------搜索框click-----------------
+			
+			$('.seek').click(function(){
+				$('.search').css('display','block');
+			});
+			$('.search_img').click(function(){
+				$('.search').css('display','none');
+			});
+			
+			//-----搜索框结束--------
+
+/*----------------------------------------nav结束----------------------------------------------*/
+
+/*----------------------------------------------图片轮播------------------------------------------*/
+   
+	/*i表示当前图片的下标和当前圆点的下标（图片和圆点是对应关系）*/
+		var i = 0;
+		var timer;
+		$(function(){
+		    /*Step 1： 设置页面刚加载出来显示的是第一张图片*/
+		    $(".box>img").eq(0).show().siblings('img').hide();    //----siblings:当选择该组元素的某一个时,选中同组的其他所以元素(可以对同组其它元素做样式更改)
+		   
+			/*开始做图片轮播，使用定时器*/
+		    start();
+		   
+			/*Step 2： 鼠标移入小圆点的时候，首先清除定时器，找到当前圆点的索引，改变当前显示的图片，使其变换成圆点对应的图片，当前圆点变换样式*/
+		    $(".circle b").hover(function(){
+		        clearInterval(timer);
+		        i = $(this).index();
+		        change();
+		    }, function(){
+		       
+				/*鼠标移出的时候，重新启动定时器*/
+		        start();
+		    });
+		    /*Step 3： 点击左边按钮时候，显示当前图片的左边的第一个图片，再点击，依次向左，图片变换，圆点样式变换。当停止点击按钮时，图片依旧一定时间内显示下一个图片（右边的第一个）*/
+		    $(".left").click(function(){
+		        i--;
+		        /*当图片已经是第一个，再点击的时候，显示最后一张图片*/
+		        if(i == -1){
+		            i = 4;
+		        }
+		        change();
+		    });
+		    /*Step 4： 点击右边按钮时候，显示当前图片的右边的第一个图片，原理同左边图片效果*/
+		    $(".right").click(function(){
+		        i++;
+		        /*当图片已经是最后一个，再点击的时候，显示第一张图片*/
+		        if(i == 4){
+		            i = -1;
+		        }
+		        change();
+		    });
+		});
+		/*开始轮播函数*/
+		function start(){
+		   
+			/*定时器，每个图片在页面上停留的时间是3s*/
+		    timer = setInterval(function(){
+		        i++;
+		        if(i == 5){
+		            i = 0;
+		        }
+		        change();
+		    }, 3000);
+		}
+		
+		/*当前图片及对应圆点变换函数*/
+		function change(){
+		    
+			/*当前图片淡入，其他图片淡出*/
+		    $(".box>img").eq(i).fadeIn(300).siblings().stop(true, true).fadeOut(300);//fadeIn淡入显示该元素--fadeOut淡出隐藏该元素
+		   
+			/*当前圆点添加类current，其他圆点删除其类current*/
+		    $("b").eq(i).addClass("current").siblings().removeClass("current");
+		}
+		//---------------------------------------------图片轮播结束-----------------------------------------
+		
+		/*--------------------------图片放大----------------------------------------------*/
+		//children:选择器
+		/*$(".text1").mouseenter(function(){ 
+			$('.fangda1').children("img").animate() })
+			.mouseleave(function(){ $('.fangda1').children("img").animate({width:10px,height:10px,marginTop:0,marginLeft:0}) })*/
+			
+			$('.fangda1>img,.fangda1>span').mousemove(function(){
+				$('.fangda1>img').addClass('transform')
+			});
+			$('.fangda1>img,.fangda1>span').mouseout(function(){
+				$('.fangda1>img').removeClass('transform')
+			});
+			
+			//--------分割线
+			$('.fangda2>img,.fangda2>span').mousemove(function(){
+				$('.fangda2>img').addClass('transform')
+			});
+			$('.fangda2>img,.fangda2>span').mouseout(function(){
+				$('.fangda2>img').removeClass('transform')
+			});
+//----------------名片二维码---------------
+
+		//---qq二维码
+		$('#qq').mousemove(function(){
+			$('#qq>i').css('display','block');
+		});
+		$('#qq').mouseout(function(){
+			$('#qq>i').css('display','none');
+		});
+		
+		//-----微信二维码
+		$('#weixin').mousemove(function(){
+			$('#weixin>i').css('display','block');
+		});
+		$('#weixin').mouseout(function(){
+			$('#weixin>i').css('display','none');
+		});
+//----------------------------------------
+		
+		$('.box_buttons li').click(function(){
+			
+			$('.newstab>div:eq('+$(this).index()+')').css('display','block').siblings().css('display','none');;
+		});
+		
+		/*--------------点赞关注------开始-------*/
+		var dz=0;
+		var like=0;//定义两个变量
+		$('.dianzan1').click(function(){
+			dz+=1;
+			$('.dianzan1').attr("src","image/dianzan1.png")
+			$('.geili').val('点赞'+dz+'人')//设置文本框的value值
+			
+			setInterval(function(){//这里是设置一个定时器,给点击喜欢的图片换会原图,时间为1500ms
+				$('.dianzan1').attr("src","image/dianzan.png")
+			},1500);
+		});
+		
+		$('.xin1').click(function(){
+			like+=1;
+			$('.xin1').attr("src","image/xin2.png")//改变该属性的路径值,实现换图片
+			$('.xihuan').val('喜欢'+like+'人')
+			
+			setInterval(function(){//这里是设置一个定时器,给点击喜欢的图片换会原图,时间为1500ms
+				$('.xin1').attr("src","image/xin1.png")
+			},1500);
+		});
+		/*--------点赞关注--------结束------*/
+		
+	});
+	
+</script><link rel="stylesheet" href="index_files/index.css"></head>
+	
+	
+	
+
+	
+
+	<body>
+	<header id="maodian">
+		<div class="logo"><img class="logo_img"><a href="#">小白的个人博客</a></div>
+		<nav>
+			<ul class="menu0">
+				<li>
+					<img src="index_files/a.png">
+					<a href="#">首页</a>
+				</li>
+				<li>关于我
+					<img src="index_files/a_003.png" style="transform: rotate(360deg);">
+					<ul class="menu11" style="display: none;">
+						<li>博主的身份</li>
+						<li>博主的年龄</li>
+						<li>博主的性别</li>
+					</ul>
+				</li>
+				<li>联系他
+					<img src="index_files/a_003.png" style="transform: rotate(360deg);">
+					<ul class="menu12" style="display: none;">
+						<li>QQ:1633869418</li>
+						<li>微信:1633869418</li>
+						<li>Email:1633869418@qq.com</li>
+					</ul>
+				</li>
+				<li><a href="#">个人博客日记</a></li>
+				<li><a href="#">网页设计心得</a></li>
+				<li><a href="#">与他交流</a></li>
+				<span>
+					<button class="seek" onclick="sclick"><img class="seek" src="index_files/a_002.png"></button>
+				</span>
+			</ul>
+			
+		</nav>
+		<div></div>
+		<div class="search" style="display: none;">
+			<input class="text" type="text" placeholder="请输入关键字词"><input class="btn0" type="button" value="搜索">
+			<a class="search_img" href="#"><img src="index_files/close-circle.png"></a>
+		</div> 
+	</header>
+	<div></div>
+	<article style="margin: 0 auto;">
+		<div class="left_div">
+			<div class="container"><!--图片轮播-->
+				<div class="box">
+					<img src="index_files/null-cd029b7b128bc43.jpg" style="display: none;">
+					<img src="index_files/null-2ce890867311fa3f.jpg" style="display: none;">
+					<img src="index_files/null5919fe1f0293dcac.jpg" style="display: none;">
+					<img src="index_files/yidian_1171116161930.jpg" style="display: block;">
+					<img src="index_files/null1be5dfbe5584b002.jpg" style="display: none;">
+				</div>
+				<div class="circle">
+					<b class=""></b>
+					<b class=""></b>
+					<b class=""></b>
+					<b class="current"></b>
+					<b class=""></b>
+				</div>
+				<div class="btn left"> &lt; </div>
+				<div class="btn right"> &gt; </div>
+			</div>
+			<div class="span0">
+				<div class="text1">
+					<a class="fangda1" href="#">
+						<img src="index_files/null675646c2cb7d0e49.jpg" class="">
+						<span>我为什么要做这个？</span>
+					</a>
+				</div>
+				<div class="text2">
+					<a class="fangda2" href="#">
+						<img src="index_files/null-9572189a25e5e3a.jpg" class="">
+						<span>是脑子瓦特啦还是什么？</span>
+					</a>
+				</div>
+			</div>
+			<div></div>
+			<div class="tab_box">
+				<div class="box_buttons">
+					<ul>
+						<li>个人博客</li>
+						<li>学习日记</li>
+						<li>心路历程</li>
+						<li>前端技术</li>
+						<li>web技术</li>
+					</ul>
+				</div>
+				<div class="newstab">
+					<div class="newitem">
+						<div class="dom">
+							<div>
+								<ul>
+									<li>
+										<a>
+											<img src="index_files/null-1b9d2d297a2f9f37.jpg">
+											<span>xxxxxx</span>
+										</a>
+									</li>
+									<li>
+										<a>
+											<img src="index_files/null-5044d42bf2360bba.jpg">
+											<span>xxxxxxxx</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<ul class="newlist">
+							<li>
+								<i></i>
+								<a href="">奋斗</a>
+								<p>加油，别放弃，几年后你蓦然回首，你会发现，你头秃了，哈哈哈哈</p>
+							</li>
+							<li>
+								<i></i>
+								<a href="">努力</a>
+								<p>世界上没有不劳而获的事，所以你只有努力，除了你家突然拆迁...</p>
+							</li>
+							<li>
+								<i></i>
+								<a href="">追求</a>
+								<p>世界上有太多美好的东西值得你去追求，所以，别局限在一处，年轻就该到处去看看，当然，你得有钱...</p>
+							</li>
+							<li>
+								<i></i>
+								<a href="">青春</a>
+								<p>正值青春的年华，正是你大展身手的时候，别害怕，害羞，人生就得落落大方，才可接受失败</p>
+							</li>
+							<li>
+								<i></i>
+								<a href="">生活</a>
+								<p>其实人生也就几十年，最后大家都是一抔黄土，没有贵贱，没有高低，所以，别自卑，别人只是比你拆迁的早而已...</p>
+							</li>
+						</ul>
+					</div>
+					<div class="newitem">
+						<div class="dom">
+							<div>
+								<ul>
+									<li>
+										<a>
+											<img src="index_files/1555385659314.jpg">
+											<span>ssssss</span>
+										</a>
+									</li>
+									<li>
+										<a>
+											<img src="index_files/null-59a68f2efb8b4c2d.jpg">
+											<span>sssssss</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<ul class="newlist">
+							<li>
+								<i></i>
+								<a href="">《木兰花·拟古决绝词柬友》————纳兰性德</a>
+								<p>
+									人生若只如初见，何事秋风悲画扇。
+									等闲变却故人心，却道故人心易变。
+									骊山语罢清宵半，泪雨霖铃终不怨。
+									何如薄幸锦衣郎，比翼连枝当日愿。
+								</p>
+							</li>
+							<li>
+								<i></i>
+								<a href="">《上邪》</a>
+								<p>上邪！我欲与君相知，长命无绝衰。
+									山无陵，江水为竭，冬雷震震，夏雨雪，天地合，乃敢与君绝。
+								</p>
+							</li>
+							<li>
+								<i></i>
+								<a href="">《寄扬州韩绰判官》</a>
+								<p>青山隐隐水迢迢，秋尽江南草未凋。
+									二十四桥明月夜，玉人何处教吹箫？
+								</p>
+							</li>
+							<li>
+								<i></i>
+								<a href="">《从军行七首·其四》</a>
+								<p>青海长云暗雪山，孤城遥望玉门关。
+									黄沙百战穿金甲，不破楼兰终不还。</p>
+							</li>
+							<li>
+								<i></i>
+								<a href="">《己亥杂诗·其五》</a>
+								<p>浩荡离愁白日斜，吟鞭东指即天涯。
+									落红不是无情物，化作春泥更护花。</p>
+							</li>
+						</ul>
+					</div>
+					<div class="newitem">
+						<div class="dom">
+							<div>
+								<ul>
+									<li>
+										<a>
+											<img src="index_files/null-296f85829536e557.jpg">
+											<span>ssssss</span>
+										</a>
+									</li>
+									<li>
+										<a>
+											<img src="index_files/null-399e1924084d1242.jpg">
+											<span>sssssss</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<ul class="newlist">
+							<li>
+								<i></i>
+								<a href="">《己亥岁二首》————曹松</a>
+								<p>
+
+									
+
+									泽国江山入战图，生民何计乐樵苏。
+
+									凭君莫话封侯事，一将功成万骨枯。
+
+									传闻一战百神愁，两岸强兵过未休。
+
+									谁道沧江总无事，近来长共血争流。
+								</p>
+							</li>
+							<li>
+								<i></i>
+								<a href="">《浪花》————王寀</a>
+								<p>									
+									一江秋水浸寒空，
+									渔笛无端弄晚风。
+									万里波心谁折得？
+									夕阳影里碎残红。
+								</p>
+							</li>
+							<li>
+								<i></i>
+								<a href="">《卜算子·咏梅》————陆游</a>
+								<p>
+									驿外断桥边，寂寞开无主。已是黄昏独自愁，更著风和雨。
+									无意苦争春，一任群芳妒。零落成泥碾作尘，只有香如故。
+								</p>
+							</li>
+							<li>
+								<i></i>
+								<a href="">《水调歌头·中秋》苏轼</a>
+								<p>
+									明月几时有？把酒问青天。不知天上宫阙，今夕是何年。
+									我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间
+								</p>
+							</li>
+							<li>
+								<i></i>
+								<a href="">《鹊桥仙》————秦观</a>
+								<p>纤云弄巧，飞星传恨，银汉迢迢暗渡。																
+									金风玉露一相逢，便胜却、人间无数。
+									柔情似水，佳期如梦，忍顾鹊桥归路。
+									两情若是长久时，又岂在、朝朝暮暮。</p>
+							</li>
+						</ul>
+					</div>
+					<div class="newitem">
+						<div class="dom">
+							<div>
+								<ul>
+									<li>
+										<a>
+											<img src="index_files/null17cd4b9d423064d5.jpg">
+											<span>ssssss</span>
+										</a>
+									</li>
+									<li>
+										<a>
+											<img src="index_files/null4cc6af3cb6120c40.jpg">
+											<span>sssssss</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<ul class="newlist">
+							<li>
+								<i></i>
+								<a href="">《江城子·乙卯正月二十夜记梦》————苏轼</a>
+								<p>十年生死两茫茫，不思量，自难忘。千里孤坟，无处话凄凉。纵使相逢应不识，尘满面，鬓如霜。
+									夜来幽梦忽还乡，小轩窗，正梳妆。相顾无言，惟有泪千行。料得年年肠断处，明月夜，短松冈</p>
+							</li>
+							<li>
+								<i></i>
+								<a href="">《声声慢》————李清照</a>
+								<p>寻寻觅觅，冷冷清清，凄凄惨惨戚戚。乍暖还寒时候，最难将息。三杯两盏淡酒，怎敌他晓来风急？雁过也，正伤心，却是旧时相识。
+									满地黄花堆积。憔悴损，如今有谁堪摘？守著窗儿独自，怎生得黑？梧桐更兼细雨，到黄昏、点点滴滴。这次第，怎一个愁字了得！</p>
+							</li>
+							<li>
+								<i></i>
+								<a href="">《侠客行》————李白</a>
+								<p>十步杀一人，千里不留行。
+									事了佛身去，深藏功与名。</p>
+							</li>
+							<li>
+								<i></i>
+								<a href="">《春望》————杜甫</a>
+								<p>国破山河在，城春草木深。感时花溅泪，恨别鸟惊心。烽火连三月，家书抵万金。白头搔更短，浑欲不胜簪。</p>
+							</li>
+							<li>
+								<i></i>
+								<a href="">《龟虽寿》————曹操</a>
+								<p>神龟虽寿，犹有竟时。螣蛇乘雾，终为土灰。 老骥伏枥，志在千里;烈士暮年，壮心不已。盈缩之期，不但在天;养怡之福，可得永年。 幸甚至哉!歌以咏志。</p>
+							</li>
+						</ul>
+					</div>
+					<div class="newitem">
+						<div class="dom">
+							<div>
+								<ul>
+									<li>
+										<a>
+											<img src="index_files/null667e989f52a0d71d.jpg">
+											<span>ssssss</span>
+										</a>
+									</li>
+									<li>
+										<a>
+											<img src="index_files/nullc550767f14600bf.jpg">
+											<span>sssssss</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<ul class="newlist">
+							<li>
+								<i></i>
+								<a href="">《如梦令·昨夜雨疏风骤》————李清照</a>
+								<p>昨夜雨疏风骤，浓睡不消残酒。试问卷帘人，却道海棠依旧。知否，知否?应是绿肥红瘦。</p>
+							</li>
+							<li>
+								<i></i>
+								<a href="">《江城子·密州出猎》————苏轼</a>
+								<p>老夫聊发少年狂。左牵黄，右擎苍，锦帽貂裘，千骑卷平冈。为报倾城随太守，亲射虎，看孙郎。 酒酣胸胆尚开张。鬓微霜，又何妨!持节云中，何日遣冯唐?会挽雕弓如满月，西北望，射天狼。</p>
+							</li>
+							<li>
+								<i></i>
+								<a href="">《蒹葭·诗经·国风·秦风》</a>
+								<p>蒹葭苍苍，白露为霜。所谓伊人，在水一方。溯洄从之，道阻且长;溯游从之，宛在水中央。蒹葭萋萋，白露未晞。所谓伊人，在水之湄。溯洄从之，道阻且跻;溯游从之，宛在水中坻。 蒹葭采采，白露未已。所谓伊人，在水之涘。溯洄从之，道阻且右;溯游从之，宛在水中沚。</p>
+							</li>
+							<li>
+								<i></i>
+								<a href="">《锦瑟》————李商隐</a>
+								<p>锦瑟无端五十弦，一弦一柱思华年。庄生晓梦迷蝴蝶，望帝春心托杜鹃。沧海月明珠有泪，蓝田日暖玉生烟。此情可待成追忆，只是当时已惘然。</p>
+							</li>
+							<li>
+								<i></i>
+								<a href="">《出塞》————王昌龄</a>
+								<p>秦时明月汉时关，万里长征人未还。但使龙城飞将在，不教胡马度阴山。</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="zhuanti">
+				<h3>
+					精彩专题
+					<span>
+						<a href="http://127.0.0.1:8848/">模仿</a>
+						<a href="http://127.0.0.1:8848/">玄幻</a>
+						<a href="http://127.0.0.1:8848/">仙侠</a>
+						<a href="http://127.0.0.1:8848/">都市</a>
+					</span>
+				</h3>
+				<ul class="zhuanti_ul">
+					<li>
+						<i class="i"><dt><a href=""><img src="index_files/1633869418-67ce10e714dbaff8.jpg"></a></dt></i>
+						<b>樱发妖姬</b>
+						<span>
+							<p>
+								八重村中的巫女。500年前某个日本小村庄中的巫女。偶然遇到逃亡到村庄的卡莲·卡斯兰娜。
+								被卡莲携带的封印崩坏能源的水晶感染，成了类似律者的存在。后来被卡莲封印。直到500年后，
+								第三次崩坏发生才脱离封印。在长空市中被琪亚娜击败</p>
+						</span>
+						<p><a href="">详情阅读</a></p>
+					</li>
+					<li>
+						<i><dt><a href=""><img src="index_files/1555385626521.jpg"></a></dt></i>
+						<b>樱发妖姬</b>
+						<span>
+							<p>八重村中的巫女。500年前某个日本小村庄中的巫女。偶然遇到逃亡到村庄的卡莲·卡斯兰娜。
+								被卡莲携带的封印崩坏能源的水晶感染，成了类似律者的存在。后来被卡莲封印。直到500年后，
+								第三次崩坏发生才脱离封印。在长空市中被琪亚娜击败</p>
+						</span>
+						<p><a href="">详情阅读</a></p>
+					</li>
+					<li>
+						<i><dt><a href=""><img src="index_files/null-257132ba08a5709.jpg"></a></dt></i>
+						<b>樱发妖姬</b>
+						<span>
+							<p>八重村中的巫女。500年前某个日本小村庄中的巫女。偶然遇到逃亡到村庄的卡莲·卡斯兰娜。
+								被卡莲携带的封印崩坏能源的水晶感染，成了类似律者的存在。后来被卡莲封印。直到500年后，
+								第三次崩坏发生才脱离封印。在长空市中被琪亚娜击败</p>
+						</span>
+						<p><a href="">详情阅读</a></p>
+					</li>
+					<li>
+						<i><dt><a href=""><img src="index_files/null6f17e921777eb721.jpg"></a></dt></i>
+						<b>樱发妖姬</b>
+						<span>
+							<p>八重村中的巫女。500年前某个日本小村庄中的巫女。偶然遇到逃亡到村庄的卡莲·卡斯兰娜。
+								被卡莲携带的封印崩坏能源的水晶感染，成了类似律者的存在。后来被卡莲封印。直到500年后，
+								第三次崩坏发生才脱离封印。在长空市中被琪亚娜击败</p>
+						</span>
+						<p><a href="">详情阅读</a></p>
+					</li>
+					<li>
+						<i><dt><a href=""><img src="index_files/null-12003fec2473c904.jpg"></a></dt></i>
+						<b>樱发妖姬</b>
+						<span>
+							<p>八重村中的巫女。500年前某个日本小村庄中的巫女。偶然遇到逃亡到村庄的卡莲·卡斯兰娜。
+								被卡莲携带的封印崩坏能源的水晶感染，成了类似律者的存在。后来被卡莲封印。直到500年后，
+								第三次崩坏发生才脱离封印。在长空市中被琪亚娜击败</p>
+						</span>
+						<p><a href="">详情阅读</a></p>
+					</li>
+					<li>
+						<i><dt><a href=""><img src="index_files/null1ee46d8d503d8abb.jpg"></a></dt></i>
+						<b>樱发妖姬</b>
+						<span>
+							<p>八重村中的巫女。500年前某个日本小村庄中的巫女。偶然遇到逃亡到村庄的卡莲·卡斯兰娜。
+								被卡莲携带的封印崩坏能源的水晶感染，成了类似律者的存在。后来被卡莲封印。直到500年后，
+								第三次崩坏发生才脱离封印。在长空市中被琪亚娜击败
+							</p>
+						</span>
+						<p><a href="">详情阅读</a></p>
+					</li>
+				</ul>
+			</div>
+			<div class="themelogo"><!--主题LOGO-->
+				<img src="index_files/themelogo.jpg">
+			</div>
+			<div class="newestba"><!--最新博文-->
+				<h3>最新博文</h3>
+				<ul class="newestba_ul">
+					<li class="new_li_1"><!--置顶多图-->
+						<h4>
+							<a href="">
+								<b>【顶】</b>
+								如何实现图片的放大与旋转
+							</a>
+						</h4>
+						<span class="new_span">
+							<a href=""><dt><img src="index_files/null1f40a8263600aef1.jpg"></dt></a>
+							<a href=""><dt><img src="index_files/null-438f35e00f392bca.jpg"></dt></a>
+							<a href=""><dt><img src="index_files/null7dd632eb37dcc7e2.jpg"></dt></a>
+							<a href=""><dt><img src="index_files/nullcfbd3a298bde60f.jpg"></dt></a>
+						</span>
+						<p class="new_p_1">其实实现图片的放大与旋转只需要设置以下几个属性即可达到要求。一，在图片容器设置overflow：hidden属性；二，给图片设置transition与tranforms属性，即可实现图片的放大</p>
+						<dl class="new_dl">
+							<i><img src="index_files/null-6c0cd483a784eab9.jpg"></i>
+							<dt>	
+								<span>小白</span>
+								<span>2019-4-25</span>
+								<span>【<a href="">模仿模板</a>】</span>
+							</dt>
+						</dl>
+					</li>
+					<li class="new_li_n"><!--前排单图-->
+						<h4><a href="">【个人博客网制作】心有猛虎细嗅蔷薇</a></h4>
+						<span class="new_li_span">
+							<dt>
+								<a href=""><img src="index_files/IMG_20190427_171519.jpg"></a>
+							</dt>
+						</span>
+						<p class="new_li_n_p">想要做一个合格的网页，必须要有全局观，其次是注重各个微小的细节，然后是...</p>
+						<dl class="new_d2">
+							<i><img src="index_files/null-6c0cd483a784eab9.jpg"></i>
+							<dt>	
+								<span>小白</span>
+								<span>2019-4-25</span>
+								<span>【<a href="">模仿模板</a>】</span>
+							</dt>
+						</dl>
+						<a href="" class="new_li_n_a">详情点击</a>
+					</li>
+					<li class="new_li_n"><!--前排单图-->
+						<h4><a href="">【个人博客网制作】人一旦忙起来</a></h4>
+						<span class="new_li_span">
+							<dt>	
+								<a href=""><img src="index_files/null-17fcd9093a1bf66f.jpg"></a>
+							</dt>
+						</span>
+						<p class="new_li_n_p">人一旦忙起来，就什么情绪也没时间表达了。难过的时候就蒙上被子好好睡一觉，醒来还是继续往前走</p>
+						<dl class="new_d2">
+							<i><img src="index_files/null-6c0cd483a784eab9.jpg"></i>
+							<dt>	
+								<span>小白</span>
+								<span>2019-4-25</span>
+								<span>【<a href="">模仿模板</a>】</span>
+							</dt>
+						</dl>
+						<a href="" class="new_li_n_a">详情点击</a>
+					</li>
+					<li class="new_li_n"><!--前排单图-->
+						<h4><a href="">【个人博客网制作】人远比自己想象的要</a></h4>
+						<span class="new_li_span">
+							<dt>
+								<a href=""><img src="index_files/yidian_117726134044.jpg"></a>
+							</dt>
+						</span>
+						<p class="new_li_n_p">人远比自己想象的要坚强，特别是当你回头看看的时候，你会发现自己走了一段自己都没想到的路。</p>
+						<dl class="new_d2">
+							<i><img src="index_files/null-6c0cd483a784eab9.jpg"></i>
+							<dt>	
+								<span>小白</span>
+								<span>2019-4-25</span>
+								<span>【<a href="">模仿模板</a>】</span>
+							</dt>
+						</dl>
+						<a href="" class="new_li_n_a">详情点击</a>
+					</li>
+					<li class="new_li_n"><!--前排单图-->
+						<h4><a href="">【个人博客网制作】你还年轻，凡事别凑</a></h4>
+						<span class="new_li_span">
+							<dt>
+								<a href=""><img src="index_files/nulld3559991276ad16.jpg"></a>
+							</dt>
+						</span>
+						<p class="new_li_n_p">你还年轻，凡事别凑活，因为一凑合就是一辈子如此。要知道，接下来的人生，还有千万种可能。</p>
+						<dl class="new_d2">
+							<i><img src="index_files/null-6c0cd483a784eab9.jpg"></i>
+							<dt>	
+								<span>小白</span>
+								<span>2019-4-25</span>
+								<span>【<a href="">模仿模板</a>】</span>
+							</dt>
+						</dl>
+						<a href="" class="new_li_n_a">详情点击</a>
+					</li>
+					<li class="plaintext"><!--纯文-->
+						<h4><a href="">【个人博客网制作】想得太多，做得太少</a></h4>
+						<p>忙的时候虽然累，但是忙完了会特别畅快舒服；闲的时候虽然爽，但是闲的时间长了心就慌了。你迷茫的原因往往只有一个，那就是在本该拼命去努力的年纪，想得太多，做得太少。</p>
+						<dl class="new_dl">
+							<i><img src="index_files/null-6c0cd483a784eab9.jpg"></i>
+							<dt>	
+								<span>小白</span>
+								<span>2019-4-25</span>
+								<span>【<a href="">模仿模板</a>】</span>
+							</dt>
+						</dl>
+						<a href="" class="plain_a">详情点击</a>
+						
+					</li>
+					<li class="new_li_n"><!--前排单图-->
+						<h4><a href="">【个人博客网制作】我们努力让自己变的比现</a></h4>
+						<span class="new_li_span">
+							<dt>
+								<a href=""><img src="index_files/null67c7afdff01d4cbb.jpg"></a>
+							</dt>
+						</span>
+						<p class="new_li_n_p">当我们努力让自己变的比现在更完美的时候，我们周围的一切都会变的更好。</p>
+						<dl class="new_d2">
+							<i><img src="index_files/null-6c0cd483a784eab9.jpg"></i>
+							<dt>	
+								<span>小白</span>
+								<span>2019-4-25</span>
+								<span>【<a href="">模仿模板</a>】</span>
+							</dt>
+						</dl>
+						<a href="" class="new_li_n_a">详情点击</a>
+					</li>
+					<li class="new_li_n"><!--前排单图-->
+						<h4><a href="">【个人博客网制作】闭嘴努力的人更加值得尊敬</a></h4>
+						<span class="new_li_span">
+							<dt>
+								<a href=""><img src="index_files/null170e6fc9ae71eea6.jpg"></a>
+							</dt>
+						</span>
+						<p class="new_li_n_p">若是自己没有尽力，就没有资格批评别人不用心。开口抱怨很容易，但是闭嘴努力的人更加值得尊敬。</p>
+						<dl class="new_d2">
+							<i><img src="index_files/null-6c0cd483a784eab9.jpg"></i>
+							<dt>	
+								<span>小白</span>
+								<span>2019-4-25</span>
+								<span>【<a href="">模仿模板</a>】</span>
+							</dt>
+						</dl>
+						<a href="" class="new_li_n_a">详情点击</a>
+					</li>
+					<li class="new_li_n"><!--前排单图-->
+						<h4><a href="">【个人博客网制作】为自己的梦想买单</a></h4>
+						<span class="new_li_span">
+							<dt>	
+								<a href=""><img src="index_files/null-42ea0ad567447a53.jpg"></a>
+							</dt>
+						</span>
+						<p class="new_li_n_p">别人再好，也是别人。自己再不堪，也是自己，独一无二的自己。只要努力去做最好的自己，一生足矣。为自己的人生负责，为自己的梦想买单</p>
+						<dl class="new_d2">
+							<i><img src="index_files/null-6c0cd483a784eab9.jpg"></i>
+							<dt>	
+								<span>小白</span>
+								<span>2019-4-25</span>
+								<span>【<a href="">模仿模板</a>】</span>
+							</dt>
+						</dl>
+						<a href="" class="new_li_n_a">详情点击</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="right_div">
+			<div class="viscard"><!--我的名片-->
+				<h2>我的名片</h2>
+				<p>网名：小白/Wstone</p>
+				<p>职业：web前段小白，网页设计小白</p>
+				<p>现居：贵州省-遵义市</p>
+				<p>Email:xiaobai@xb.com</p>
+				<ul>
+					<li><a href="#"><img src="index_files/a_004.png"></a></li>
+					<li><a href="#"><img src="index_files/email.png"></a></li>
+					<li id="qq">
+						<a href="#"><img src="index_files/QQ.png"></a>
+						<i style="display: none;"><img src="index_files/1554818446_qrcode.png"></i>
+					</li>
+					<li id="weixin">
+						<a href="#"><img src="index_files/a_005.png"></a>
+						<i style="display: none;"><img src="index_files/1554818576_qrcode.png"></i>
+					</li>
+				</ul>
+			</div>
+			<div class="webaff"><!--网站公告-->
+				<h2>网站公告
+					<span></span>
+				</h2>
+				<ul>
+					<li><a href="">公告一：不知道公告啥 </a></li>
+					<li><a href="">公告二：不知道公告啥 </a></li>
+					<li><a href="">公告三：不知道公告啥 </a></li>
+					<li><a href="">公告四：不知道公告啥 </a></li>
+				</ul>
+			</div>
+			<div class="clickotl"><!--点击排行-->
+				<h3>点击排行</h3>
+				<section><!--这是一个重要标题的标签（目前我的大概理解即使这样--重要！！）-->
+					<a>
+						<img src="index_files/null-1794033df297a496.jpg">
+						<span>我也不知道排什么行</span>
+					</a>
+				</section>
+				<ul>
+					<li><i></i><a href="">top1不知道是啥</a></li>
+					<li><i></i><a href="">top2也不知道是啥</a></li>
+					<li><i></i><a href="">top3也不知道是啥</a></li>
+					<li><i></i><a href="">top4还是不知道是啥</a></li>
+					<li><i></i><a href="">top5不知道是啥</a></li>
+					<li><i></i><a href="">top6不知道是啥</a></li>
+					<li><i></i><a href="">top7不知道是啥</a></li>
+					<li><i></i><a href="">top8不知道是啥</a></li>
+				</ul>
+				
+			</div>
+			<div class="masterrd"><!--站长推荐-->
+				<h3>站长推荐</h3>
+				<section>
+					<a href="">
+						<img src="index_files/null43bec8773882654c.jpg">
+						<span>我也不知道推荐啥</span>
+					</a>
+				</section>
+				<ul class="masterrd_ul">
+					<li>
+						<a href="">
+							<i><dt><img src="index_files/null4bbd004e9bbc1002.jpg"></dt></i>
+							<p>没有天生的信心，只有不断培养的信心。</p>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<i><dt><img src="index_files/1555385593742.jpg"></dt></i>
+							<p>人的成就和差异决定于其业余时间</p>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<i><dt><img src="index_files/1554475690479.jpg"></dt></i>
+							<p>弱者，连死的方式都无从选择。</p>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<i><dt><img src="index_files/null-438f35e00f392bca.jpg"></dt></i>
+							<p>每天早上叫我们起床的不是闹钟，而是梦想。</p>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<i><dt><img src="index_files/null4674732f5fa7a6d0.jpg"></dt></i>
+							<p>微小的幸福就在身边，容易满足就是天堂。</p>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<i><dt><img src="index_files/1508763992897.jpg"></dt></i>
+							<p>天行健，君子以自强不息；地势坤，君子以厚德载物。</p>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<i><dt><img src="index_files/null-17fcd9093a1bf66f.jpg"></dt></i>
+							<p>猛兽总是独行，牛羊才成群结队。</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="chatu"><!--插图--><img src="index_files/dlam.jpg"></div>
+			<div class="guesswyl"><!--猜你喜欢-->
+				<h3>猜你喜欢</h3>
+				<ul>
+					<li><a href="">不知道你们喜欢什么</a></li>
+					<li><a href="">不知道你们喜欢什么</a></li>
+					<li><a href="">不知道你们喜欢什么</a></li>
+					<li><a href="">不知道你们喜欢什么</a></li>
+					<li><a href="">不知道你们喜欢什么</a></li>
+					<li><a href="">不知道你们喜欢什么</a></li>
+					<li><a href="">不知道你们喜欢什么</a></li>
+					<li><a href="">不知道你们喜欢什么</a></li>
+				</ul>
+			</div>
+			<div class="chatu"><!--插图--><img src="index_files/null-2068d9564a2be3b2.jpg"></div>
+			<div class="websta"><!--网页统计-->
+				<h3>网页信息</h3>
+				<ul>
+					<li><b>建成时间：</b>2019-04-25</li>
+					<li><b>网页程序：</b>远观临摹wbs0.0</li>
+					<li><b>主题：</b><a href="">《动漫视献》</a></li>
+					<li><b>文章统计：</b>我也不知道多少条</li>
+					<li><b>文章评论：</b>虚无的零条</li>
+					<li><b>统计数据：</b>自己猜的...</li>
+					<li><b></b></li>
+				</ul>
+			</div>
+			<div class="blogroll"><!--友情链接-->
+				<li>给个赞，关注一下呗。</li>
+				<li><img src="index_files/weixin.png" class="weixin"></li> 
+				<img src="index_files/dianzan.png" class="dianzan1">
+				<img src="index_files/xin1.png" class="xin1">
+				<input type="text" class="geili" placeholder="点赞0人" value="点赞1人">
+				<input type="text" class="xihuan" placeholder="喜欢0人" value="喜欢1人">
+			</div>
+		</div>
+	</article>
+	<footer>
+		<div>
+			<div class="endimg">
+				<img src="index_files/1554818446_qrcode.png">
+				<img src="index_files/1554818576_qrcode.png">
+			</div>
+			<div class="endnav">
+			  <p><b>站点声明：</b></p>
+			  <p>1、本站个人博客模板，均为小白本人设计，个人可以使用，但是未经许可不得用于任何商业目的。</p>
+			  <p>2、所有文章未经授权禁止转载、摘编、复制或建立镜像，如有违反，追究法律责任。举报邮箱：<a href="">xiaobai@qq.com</a></p>
+			  <p>Copyright © <a href="">www.xiaobai.com</a> All Rights Reserved. 备案号：<a href="">天lDQ备00000001号-1</a></p>
+			</div>
+		</div>
+		<dt><a href="#maodian" class="anchor"><!--锚点跳转--><img src="index_files/anchor.png"></a></dt>
+	</footer>
+	<script>document.write('<script src="//' + (location.host || 'localhost').split(':')[0] + ':35929/livereload.js?snipver=1"></' + 'script>')</script><script src="index_files/livereload.js"></script><script>document.addEventListener('LiveReloadDisconnect', function() { setTimeout(function() { window.location.reload(); }, 500); })</script>
+
+</body></html>
